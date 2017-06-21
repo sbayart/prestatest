@@ -1,3 +1,4 @@
+{debug}
 {*
 * 2007-2016 PrestaShop
 *
@@ -25,9 +26,18 @@
 {if isset($HOOK_HOME_TAB_CONTENT) && $HOOK_HOME_TAB_CONTENT|trim}
     {if isset($HOOK_HOME_TAB) && $HOOK_HOME_TAB|trim}
         <ul id="home-page-tabs" class="nav nav-tabs clearfix">
-			{$HOOK_HOME_TAB}
+            {$HOOK_HOME_TAB}
 		</ul>
+        {$meta_title}
+        <h1>{l|truncate:10 s='Hello Everyone in the Beautiful Word !'}</h1>
+        <p>{l s='Today'}: {$smarty.now|date_format:" %e %b %Y"}</p>
 	{/if}
+    {if $cart_qties<5}
+        <p>{l s='Free shipping for 5 or more products'}</p>
+    {else}
+        <p>{l s='Free shipping'}</p>
+    {/if}
+
 	<div class="tab-content">{$HOOK_HOME_TAB_CONTENT}</div>
 {/if}
 {if isset($HOOK_HOME) && $HOOK_HOME|trim}
